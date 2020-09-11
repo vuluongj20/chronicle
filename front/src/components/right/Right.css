@@ -1,0 +1,33 @@
+.right-wrap {
+  position: relative;
+  width: calc(50% - var(--padding) * 2.4);
+  margin-top: var(--padding);
+  margin-left: calc(var(--padding) * 1.4);
+}
+.right-wrap-bottom-padding {
+  height: 50vh;
+}
+
+@media only screen and (max-aspect-ratio: 1/1) {
+  .right-wrap {
+    width: calc(100% - var(--padding) * 4);
+    margin-left: 0;
+    margin-top: calc(var(--padding) * 2);
+    padding: 0 calc(var(--padding) * 2);
+    max-width: 40em;
+  }
+  .right-wrap-bottom-padding {
+    height: 25vh;
+  }
+}
+
+@supports(padding: min(0px)) {
+  .right-wrap {
+    width: min(calc(50% - var(--padding)*2.4), calc(50% - var(--padding)*1.4 - env(safe-area-inset-right)));
+  }
+  @media only screen and (max-aspect-ratio: 1/1) {
+    .right-wrap {
+      width: min(calc(100% - var(--padding)*4), calc(100% - var(--padding)*2 - env(safe-area-inset-right)));
+    }
+  }
+}

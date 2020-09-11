@@ -1,0 +1,31 @@
+.county-info-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--surface);
+  border-radius: 0.6em;
+  border: solid 1px var(--border);
+  padding: 0.6em 1.2em;
+  user-select: none;
+  transform: translate3d(0, -20em, 0);
+}
+.county-info-divider {
+  width: 100%;
+  height: 0;
+  border-bottom: solid 1px var(--line);
+  margin: 0.4em 0 0.4em;
+}
+.county-info-rows {
+  display: flex;
+}
+.county-info-row-names>p:not(:last-child),
+.county-info-row-data>p:not(:last-child) {
+  margin: 0.4em 0;
+}
+.county-info-row-names {
+  margin-right: 0.8em;
+  opacity: 0.6;
+}
+.infection-rate-label {
+  opacity: 0.6;
+}

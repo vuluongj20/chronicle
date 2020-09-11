@@ -1,0 +1,19 @@
+.count-wrap {
+  position: absolute;
+  bottom: var(--padding);
+  left: var(--padding);
+  opacity: 0;
+}
+.count {
+  color: var(--label);
+  margin-bottom: 0;
+}
+.count-unit {
+  color: var(--label);
+}
+
+@supports(padding: max(0px)) {
+  .ft-inner-wrap {
+    bottom: max(var(--padding), env(safe-area-inset-bottom));
+  }
+}

@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+}
+body {
+  margin: 0;
+  font-family: 'Apercu Mono', 'Roboto Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --padding: 2.8vw;
+}
+
+h1, h2, h3 {
+  font-family: 'Founders Grotesk';
+  font-weight: 700;
+  color: var(--heading);
+}
+h1 {
+  font-size: 4.8em;
+  line-height: 1;
+  margin-bottom: 0.2em;
+}
+h2 {
+  font-size: 2.8em;
+  line-height: 1;
+  margin-bottom: 0.4em;
+}
+h3 {
+  line-height: 1;
+  margin-bottom: 0.32em;
+}
+h4 {
+  font-family: 'Founders Grotesk Text';
+  font-weight: 500;
+  font-size: 1.8em;
+  color: var(--heading);
+}
+
+p, a, button {
+  font-family: 'Founders Grotesk Text';
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--body);
+}
+button {
+  appearance: none;
+  font-size: 1em;
+  background: transparent;
+  border: none;
+  user-select: none;
+}
+button:focus {
+  outline: none;
+}
+
+@media only screen and (min-width: 1680px) {
+  body {
+    font-size: 17px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 3.8em;
+  }
+  h2 {
+    font-size: 2.4em;
+  }
+  h4 {
+    font-size: 1.4em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+    min-width: 320px;
+    --padding: 4vw;
+  }
+  .mobile-hidden {
+    display: none;
+  }
+  h1 {
+    font-size: 3.4em;
+  }
+  h2 {
+    font-size: 2.2em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 2.4em;
+  }
+  h4 {
+    font-size: 1.2em;
+  }
+}
+
+@font-face {
+  font-family: 'Founders Grotesk';
+  font-weight: 700;
+  src: url('/fonts/FoundersGrotesk-Bold.woff2') format('woff2'),
+  url('/fonts/FoundersGrotesk-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Founders Grotesk Text';
+  font-weight: 500;
+  src: url('/fonts/FoundersGroteskText-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Apercu Mono';
+  font-weight: 700;
+  src: url('/fonts/ApercuMono-Bold.woff2') format('woff2'),
+  url('/fonts/ApercuMono-Bold.woff') format('woff');
+}

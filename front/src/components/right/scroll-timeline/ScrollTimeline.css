@@ -1,0 +1,218 @@
+.scroll-timeline-wrap {
+  position: relative;
+  margin-top: 4em;
+  --st-line-offset: 4em;
+}
+.st-date-wrap {
+  position: relative;
+  height: 2.4vh;
+  min-height: 1em;
+}
+.st-top-padding {
+  height: 4em;
+}
+.st-top-padding.full {
+  height: 50vh;
+}
+
+
+/* LINE */
+.st-line-wrap {
+  position: absolute;
+  top: 0;
+  left: var(--st-line-offset);
+  height: 100%;
+  width: 2px;
+}
+.st-line-start {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-5px, -5px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--line);
+  border: solid 2px var(--background);
+  opacity: 0;
+}
+.st-line {
+  width: 0;
+  height: 100%;
+  border-right: solid 2px var(--line);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+
+/* CURRENT DATE WRAP */
+.st-current-date-wrap {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 50%;
+  transform: translateX(var(--st-line-offset));
+  width: 1px;
+  height: 1px;
+  z-index: 1;
+}
+.st-current-date-loading-wrap {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-9px, -9px);
+}
+.st-current-date-loading-text {
+  position: absolute;
+  left: 3.2em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  color: var(--label);
+  white-space: nowrap;
+}
+.loading-circle-svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.loading-circle {
+  box-sizing: border-box;
+  stroke: var(--theme);
+  stroke-width: 2px;
+  r: calc(1em - 4px);
+  transform: translate(1em, 1em) rotate(-90deg);
+  fill: none;
+  stroke-dasharray: 75.3984;
+  stroke-dashoffset: 150.7968;
+  animation: loader 2.4s cubic-bezier(0.645, 0.045, 0.355, 1) infinite,
+    rotate 2s linear infinite;
+}
+@keyframes loader {
+  0% {
+    stroke-dasharray: 75.3984;
+    stroke-dashoffset: 226.1952;
+  }
+  32% {
+    stroke-dasharray: 56.5488;
+    stroke-dashoffset: 150.7968;
+  }
+  100% {
+    stroke-dasharray: 75.3984;
+    stroke-dashoffset: 75.3984;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: translate(1em, 1em) rotate(-120deg);
+  }
+  100% {
+    transform: translate(1em, 1em) rotate(240deg);
+  }
+}
+.st-current-date-scroll-text {
+  position: absolute;
+  left: 3.2em;
+  top: 50%;
+  transform: translateY(100%);
+  font-size: 0.8em;
+  color: var(--label);
+  opacity: 0;
+  white-space: nowrap;
+}
+.st-current-date-ball {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-5px, -5px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--theme);
+  border: solid 2px var(--background);
+  opacity: 0;
+}
+.st-current-date-tag-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(calc(-100% - 0.8em), -50%);
+  font-size: 0.8em;
+  padding: 0.2em 0.6em;
+  border-radius: 0.4em;
+  background-color: var(--theme);
+  opacity: 0;
+}
+.st-current-date-tag {
+  white-space: nowrap;
+}
+
+
+/* MESSAGES */
+.st-anchor-wrap {
+  position: relative;
+  height: 100%;
+  width: var(--st-line-offset);
+  text-align: right;
+  padding-right: 0.8em;
+  box-sizing: border-box;
+}
+.st-month-anchor,
+.st-date-anchor {
+  display: inline-block;
+  right: 0.8em;
+  font-size: 0.8em;
+}
+.st-date-anchor {
+  color: var(--label);
+  margin-left: 0.4em;
+}
+.st-message-wrap {
+  position: absolute;
+  top: 0;
+  left: var(--st-line-offset);
+  width: calc(100% - var(--st-line-offset));
+  max-width: 36em;
+  height: 100%;
+}
+.st-message-line {
+  position: absolute;
+  top: 50%;
+  height: 0;
+  width: calc(var(--st-line-offset)/2);
+  border-bottom: solid 2px var(--line);
+}
+.st-message-date {
+  color: var(--label);
+}
+.st-message-content {
+  margin-left: calc(var(--st-line-offset)/2 + 0.8em);
+  width: calc(100% - var(--st-line-offset)/2 - 1.2em);
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .scroll-timeline-wrap {
+    --st-line-offset: 3.2em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .st-top-padding {
+    height: 2.8em;
+  }
+  .scroll-timeline-wrap {
+    margin-top: 2.8em;
+  }
+}
+
+@media only screen and (max-aspect-ratio: 1/1) {
+  .st-current-date-wrap {
+    top: 75%;
+  }
+  .st-top-padding.full {
+    height: 20vh;
+  }
+}

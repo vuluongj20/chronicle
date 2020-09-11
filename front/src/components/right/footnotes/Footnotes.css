@@ -1,0 +1,48 @@
+.footnotes-wrap {
+  display: flex;
+  align-items: flex-end;
+  height: 50vh;
+}
+.ft-inner-wrap {
+  width: 100%;
+  border-top: solid 1px var(--line);
+  padding: var(--padding) 0;
+}
+.ft-content {
+  max-width: 28em;
+  margin: 0 4em;
+}
+.ns-footnote {
+  color: var(--label);
+  font-size: 0.8em;
+  margin-bottom: 0.4em;
+}
+.ns-footnote>a {
+  color: var(--label);
+}
+
+@media only screen and (max-width: 1024px) {
+  .ft-content {
+    max-width: 28em;
+    margin: 0 3.2em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ft-content {
+    max-width: 28em;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-aspect-ratio: 1/1) {
+  .footnotes-wrap {
+    height: 25vh;
+  }
+}
+
+@supports(padding: max(0px)) {
+  .ft-inner-wrap {
+    padding-bottom: max(var(--padding), env(safe-area-inset-bottom));
+  }
+}

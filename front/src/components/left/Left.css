@@ -1,0 +1,43 @@
+.left-wrap {
+  position: sticky;
+  top: 2.6em;
+  left: 0;
+  width: 50%;
+  height: calc(100vh - 2.6em);
+  background-color: var(--surface);
+  overflow: hidden;
+  object-fit: cover;
+  border-right: solid 1px var(--line);
+}
+.hero {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  will-change: transform;
+}
+.hero-cover-start {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 102%;
+  height: 100%;
+  background: var(--background);
+  transform-origin: right;
+}
+
+@media only screen and (max-aspect-ratio: 1/1) {
+  .left-wrap {
+    top: 2.6em;
+    width: 100%;
+    height: calc(50vh - 2.6em);
+    margin: 0;
+    z-index: 2;
+    border-right: none;
+    border-bottom: solid 1px var(--line);
+  }
+}

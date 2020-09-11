@@ -1,0 +1,19 @@
+.data-descriptions-wrap {
+  position: absolute;
+  bottom: var(--padding);
+  right: var(--padding);
+  opacity: 0;
+  text-align: right;
+  width: 12em;
+}
+.dd-text {
+  color: var(--label);
+  margin-bottom: 0;
+  font-size: 0.8em;
+}
+
+@supports(padding: max(0px)) {
+  .data-descriptions-wrap {
+    bottom: max(var(--padding), env(safe-area-inset-bottom));
+  }
+}

@@ -1,0 +1,49 @@
+.variable-selection-wrap {
+  display: flex;
+  position: absolute;
+  top: calc(var(--padding)*0.68);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.variable-selection-inner-wrap {
+  display: flex;
+  background: var(--surface);
+  border-radius: 1.2em;
+  overflow: hidden;
+  margin: 0 calc(var(--padding)/2);
+}
+.variable-option {
+  color: var(--body);
+  white-space: nowrap;
+  padding: 0.3em 1.2em;
+  border-radius: 1.2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 120ms;
+}
+.variable-option:hover {
+  color: var(--heading);
+  background: var(--surface-hover);
+}
+.variable-option.active {
+  background: var(--line);
+}
+.variable-selection-inner-wrap.themed>.variable-option.active {
+  background: var(--theme);
+}
+
+@media only screen and (max-aspect-ratio: 1/1) and (max-width: 480px) {
+  .variable-selection-wrap {
+    top: var(--padding);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .variable-selection-wrap {
+    border-radius: 1.1em;
+  }
+  .variable-option {
+    padding: 0.5em 1.2em;
+  }
+}

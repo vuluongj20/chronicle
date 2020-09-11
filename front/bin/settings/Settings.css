@@ -1,0 +1,165 @@
+/* SETTINGS */
+.settings-wrap {
+  position: absolute;
+  bottom: var(--padding);
+  right: var(--padding);
+  bottom: calc(var(--padding) + env(safe-area-inset-bottom));
+  right: calc(var(--padding) + env(safe-area-inset-left));
+}
+.settings-background-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: 200ms ease-out;
+}
+.settings-background-wrap.active {
+  pointer-events: all;
+  opacity: 1;
+}
+.settings-button {
+  padding: 0.8em 1em;
+  background: var(--background);
+  border-radius: 0.8em;
+  border: solid 1px var(--border);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+.settings-button:hover,
+.settings-button.active {
+  background: var(--surface-hover);
+}
+.settings-button-text {
+  font-size: 0.8em;
+  color: var(--body);
+  transition: 120ms;
+}
+.settings-button:hover>.settings-button-text,
+.settings-button.active>.settings-button-text {
+  color: var(--heading);
+}
+.settings-button-icon {
+  display: block;
+  width: 2em;
+  height: 2em;
+  margin: 0 auto 0.4em;
+}
+.settings-button-icon path.to-fill {
+  fill: var(--heading);
+  transition: 120ms;
+}
+.settings-button:hover>.settings-button-icon path.to-fill,
+.settings-button.active>.settings-button-icon path.to-fill {
+  fill: var(--heading);
+}
+.settings-panel {
+  width: calc(100vw - var(--padding)*2);
+  min-width: calc(320px - var(--padding)*2);
+  max-width: 30em;
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(calc(-100% - 1.2em));
+  background: var(--background);
+  border-radius: 0.8em;
+  border: solid 1px var(--border);
+  box-shadow: var(--shadow);
+  padding: 0.4em 1.2em;
+  opacity: 0;
+  transition: 200ms ease-out;
+  pointer-events: none;
+}
+.settings-panel.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 2.8em;
+}
+.settings-text {
+  white-space: nowrap;
+}
+.switch {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  border-radius: 0.8em;
+  background: var(--surface-elevated);
+  cursor: pointer;
+  transition: 120ms ease-out;
+}
+.switch.active {
+  background: var(--theme-dark);
+}
+.switch-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background: var(--background);
+  transform: translate(2px, 2px);
+  transition: 120ms ease-out;
+}
+.switch.active>.switch-slider {
+  transform: translate(20px, 2px);
+}
+.speed-selection-wrap {
+  display: flex;
+  align-items: center;
+  height: 1.8em;
+  border-radius: 0.9em;
+  border: solid 1px var(--border);
+}
+.speed-option {
+  height: 100%;
+  color: var(--body);
+  padding: 0 1.2em;
+  border-radius: 0.9em;
+  cursor: pointer;
+  transition: 120ms;
+}
+.speed-option:hover {
+  background-color: var(--surface-hover);
+}
+.speed-option.active {
+  background-color: var(--theme);
+}
+
+@media only screen and (max-width: 768px) {
+  .settings-row {
+    height: 3.2em;
+  }
+  .switch {
+    width: 3.2em;
+    height: 1.6em;
+    border-radius: 0.8em;
+  }
+  .switch-slider {
+    width: 1.6em;
+    height: 1.6em;
+  }
+  .switch.active>.switch-slider {
+    transform: translateX(1.6em);
+  }
+  .speed-selection-wrap {
+    height: 2em;
+    border-radius: 1em;
+  }
+}
+
+@supports (filter: blur(0px)) {
+  /* .settings-button {
+    background: var(--surface-transparent);
+    backdrop-filter: blur(2em) saturate(0.5);
+  } */
+}

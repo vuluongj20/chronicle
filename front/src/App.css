@@ -1,0 +1,21 @@
+#App {
+  padding-top: 2.6em;
+}
+.main-content {
+  display: flex;
+}
+.main-content-divider {
+  width: calc(100% - var(--padding)*2);
+  height: 0;
+  border-bottom: 1px solid var(--line);
+  margin: 0 var(--padding);
+  transform: translateY(-4px);
+}
+
+
+@media only screen and (max-aspect-ratio: 1/1) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
