@@ -12,6 +12,9 @@
   animation: fade-in 2s ease-out forwards;
   user-select: none;
 }
+#earth-canvas-wrapper > canvas:focus {
+  outline: none;
+}
 
 .overlay-wrap {
   width: 100%;
