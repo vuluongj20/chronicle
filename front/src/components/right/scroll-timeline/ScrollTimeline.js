@@ -69,6 +69,15 @@ const messages = {
   '2020-08-08': {
     text: "Total cases reach 5 million.",
   },
+  '2020-08-23': {
+    text: "The U.S. Food and Drug Adminstration issues emergency use authorization for convalescent plasma to treat COVID-19.",
+  },
+  '2020-08-30': {
+    text: "More than 6 million total cases have been reported.",
+  },
+  '2020-09-11': {
+    text: "Despite limited reopening and health precautions, American colleges and universities have reported more than 36,000 coronavirus cases.",
+  },
 }
 
 const content = {
