@@ -168,18 +168,18 @@ export function initializeCanvas(counties, usTopo, worldTopo, cases, monthArray,
   }
   const world = topojson.mesh(worldTopo);
   const us = topojson.mesh(usTopo);
-  // draw(
-  //   world.coordinates,
-  //   new THREE.LineBasicMaterial({color: '#BBBBBB'})
-  // );
-  // draw(
-  //   us.coordinates,
-  //   new THREE.LineBasicMaterial({color: '#AAAAAA'})
-  // );
+  draw(
+    world.coordinates,
+    new THREE.LineBasicMaterial({color: '#CCC'})
+  );
+  draw(
+    us.coordinates,
+    new THREE.LineBasicMaterial({color: '#AAA'})
+  );
 
   // GLOBE
   const sphereGeometry = new THREE.SphereBufferGeometry(100, 48, 48)
-  const sphereMaterial  = new THREE.MeshBasicMaterial({color: '#F6F6F6'})
+  const sphereMaterial  = new THREE.MeshBasicMaterial({color: '#FFFFFF'})
   const sphereMesh = new THREE.Mesh( sphereGeometry, sphereMaterial )
   scene.add(sphereMesh)
 
@@ -336,7 +336,7 @@ export function initializeCanvas(counties, usTopo, worldTopo, cases, monthArray,
   // RENDER
   renderer.setSize(wrapperBBox.width, wrapperBBox.height)
   renderer.setPixelRatio(window.devicePixelRatio)
-  renderer.setClearColor('#F6F6F6', 1)
+  renderer.setClearColor('#FFFFFF', 1)
   renderer.render(scene, camera)
 
   // ANIMATE

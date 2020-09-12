@@ -141,7 +141,7 @@ class App extends Component {
                     cylinderMesh.geometry = this.baseGeometries[index + 1]
                   }
                 },
-                onLeaveBack: () => {
+                onEnterBack: () => {
                   if (index < this.baseGeometries.length - 2) {
                     cylinderMesh.geometry.dispose()
                     cylinderMesh.geometry = this.baseGeometries[index]
