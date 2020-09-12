@@ -2,7 +2,7 @@
 
 Chronicle is a 3D data visualization showcasing the spread of the coronavirus in the United States. Here you can find the code for it.
 
-![3D Earth with bars pointing outward](feature.jpg)
+![3D Earth with bars pointing outward](feature.png)
 
 
 ## Code structure
