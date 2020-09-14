@@ -174,7 +174,7 @@ export function initializeCanvas(counties, usTopo, worldTopo, cases, monthArray,
   );
   draw(
     us.coordinates,
-    new THREE.LineBasicMaterial({color: '#AAA'})
+    new THREE.LineBasicMaterial({color: '#BBB'})
   );
 
   // GLOBE
