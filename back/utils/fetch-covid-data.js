@@ -43,18 +43,18 @@ const fetchCovidData = function() {
                 row.fips,
                 row.cases,
                 row.deaths,
-                Math.max(+(row.cases/2000).toFixed(0), 1),
-                Math.max(+(row.deaths/140).toFixed(0), 1),
-                Math.max(county[populationIndex] > 0 ? +(row.cases/county[populationIndex] * 500).toFixed(0) : 0.1, 1),
-                Math.max(county[populationIndex] > 0 ? +(row.deaths/county[populationIndex] * 7000).toFixed(0) : 0.1, 1),
-                Math.max(row.cases > 0 ? Math.max(+(Math.log(row.cases/2000) * 6).toFixed(0), 0) : 0.1, 1),
-                Math.max(row.deaths > 0 ? Math.max(+(Math.log(row.deaths/140) * 4).toFixed(0), 0) : 0.1, 1),
+                Math.max(+(row.cases/2000).toFixed(0), row.cases ? 1 : 0),
+                Math.max(+(row.deaths/140).toFixed(0), row.deaths ? 1 : 0),
+                Math.max(county[populationIndex] > 0 ? +(row.cases/county[populationIndex] * 500).toFixed(0) : 0.1, row.cases ? 1 : 0),
+                Math.max(county[populationIndex] > 0 ? +(row.deaths/county[populationIndex] * 7000).toFixed(0) : 0.1, row.deaths ? 1 : 0),
+                Math.max(row.cases > 0 ? Math.max(+(Math.log(row.cases/2000) * 6).toFixed(0), 0) : 0.1, row.cases ? 1 : 0),
+                Math.max(row.deaths > 0 ? Math.max(+(Math.log(row.deaths/140) * 4).toFixed(0), 0) : 0.1, row.deaths ? 1 : 0),
                 Math.max(county[populationIndex] > 0 && row.cases/county[populationIndex] > 0 ?
                   Math.max(+(Math.log(row.cases/county[populationIndex]*500) * 6).toFixed(0), 0)
-                  : 0.1, 1),
+                  : 0.1, row.cases ? 1 : 0),
                 Math.max(county[populationIndex] > 0 && row.deaths/county[populationIndex] > 0 ?
                   Math.max(+(Math.log(row.deaths/county[populationIndex]*7000) * 4).toFixed(0), 0)
-                  : 0.1, 1)
+                  : 0.1, row.deaths ? 1 : 0)
               ])
             }
           })
