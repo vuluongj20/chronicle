@@ -28,7 +28,7 @@ const styles = {
   surfaceHover: '#F1F1F1',
   surfaceElevated: '#EEEEEE',
   border: 'rgba(240, 240, 240, 0.8)',
-  line: '#EAEAEA',
+  line: '#E1E1E1',
   lineLight: '#EEEEEE',
   shadow: '0 0 2em 0 rgba(0, 0, 0, 0.05)'
 }
