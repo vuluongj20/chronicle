@@ -46,6 +46,13 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const transformResponse = (data) => {
+      if (data[0] === "\"") {
+        return JSON.parse(data.slice(1, -1).replace(/\\/g, ''));
+      } else {
+        return JSON.parse(data);
+      }
+    }
     setTimeout(async () => {
       // INIT THREE.JS
       const { options } = this.props
@@ -56,11 +63,11 @@ class App extends Component {
         { data: countyData },
         { data: nationalData },
       ] = await Promise.all([
-        axios.get(`${backendURL}/api/meta/counties`),
-        axios.get(`${backendURL}/api/meta/us`),
-        axios.get(`${backendURL}/api/meta/world`),
-        axios.get(`${backendURL}/api/data/county`),
-        axios.get(`${backendURL}/api/data/national`),
+        axios.get(`${backendURL}/api/meta/counties`, { transformResponse }),
+        axios.get(`${backendURL}/api/meta/us`, { transformResponse }),
+        axios.get(`${backendURL}/api/meta/world`, { transformResponse }),
+        axios.get(`${backendURL}/api/data/county`, { transformResponse }),
+        axios.get(`${backendURL}/api/data/national`, { transformResponse }),
       ])
       const monthArray = getMonthArray(countyData.range)
       const {

@@ -10,6 +10,7 @@
   color: var(--label);
   margin-bottom: 0;
   font-size: 0.8em;
+  line-height: 1;
 }
 
 @supports(padding: max(0px)) {

@@ -15,7 +15,7 @@
 .variable-option {
   color: var(--body);
   white-space: nowrap;
-  padding: 0.3em 1.2em;
+  padding: 0.2em 1.2em;
   border-radius: 1.2em;
   background: none;
   border: none;
@@ -44,6 +44,6 @@
     border-radius: 1.1em;
   }
   .variable-option {
-    padding: 0.5em 1.2em;
+    padding: 0.3em 1.2em;
   }
 }

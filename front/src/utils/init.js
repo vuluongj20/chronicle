@@ -225,54 +225,31 @@ export function initializeCanvas(counties, usTopo, worldTopo, cases, monthArray,
     return mergedGeometry
   }
 
-  let mergedCaseGeometries = {}
-  let mergedDeathGeometries = {}
-  let proceed = true
-  let currentDate = cases.range.start
+  const mergedCaseGeometries = {}
+  const mergedDeathGeometries = {}
   const processedDates = []
 
-  while (proceed) {
-    mergedCaseGeometries[currentDate] = getMergedGeometry(
+  for (const date in cases.data) {
+    mergedCaseGeometries[date] = getMergedGeometry(
       counties,
       cases,
       {
         ...options,
         variable: 'cases'
       },
-      currentDate
+      date
     )
-    mergedDeathGeometries[currentDate] = getMergedGeometry(
+    mergedDeathGeometries[date] = getMergedGeometry(
       counties,
       cases,
       {
         ...options,
         variable: 'deaths'
       },
-      currentDate
+      date
     )
-    processedDates.push(currentDate);
-
-    ([proceed, currentDate] = getNextDate(currentDate, monthArray, 10))
+    processedDates.push(date);
   }
-  mergedCaseGeometries[cases.range.end] = getMergedGeometry(
-    counties,
-    cases,
-    {
-      ...options,
-      variable: 'cases'
-    },
-    cases.range.end
-  )
-  mergedDeathGeometries[cases.range.end] = getMergedGeometry(
-    counties,
-    cases,
-    {
-      ...options,
-      variable: 'deaths'
-    },
-    cases.range.end
-  )
-  processedDates.push(cases.range.end)
 
   const baseCaseGeometries = []
   const baseDeathGeometries = []
