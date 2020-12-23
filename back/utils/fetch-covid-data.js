@@ -143,7 +143,7 @@ const fetchCountyData = new Promise((resolve, reject) => {
               countyData[row.date] = []
               currentDate = row.date
               if (proceed) {
-                ([proceed, nextDate] = getNextDate(currentDate, monthArray, 10))
+                ([proceed, nextDate] = getNextDate(currentDate, monthArray, 20))
               }
               if (!proceed) {
                 nextDate = countyRange.end
