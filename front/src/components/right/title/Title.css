@@ -42,15 +42,18 @@
 }
 .share-button {
   position: relative;
-  width: 1.6em;
-  height: 1.6em;
+  width: 2em;
+  height: 2em;
   margin-right: 1.6em;
   padding: 0;
+  border-radius: 0.4em;
   cursor: pointer;
   transition: 120ms;
 }
-.share-button:hover {
+.share-button:hover,
+.share-button:focus {
   transform: scale(1.1);
+  box-shadow: 0 0 0 4px var(--line);
 }
 .share-button:active {
   transform: scale(1);
@@ -59,8 +62,8 @@
   margin-right: 0;
 }
 .share-wrap svg {
-  width: 1.6em;
-  height: 1.6em;
+  width: 2em;
+  height: 2em;
 }
 .share-wrap .to-fill {
   fill: var(--heading);

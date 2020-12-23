@@ -19,13 +19,14 @@
 }
 .nav-app-name {
   text-decoration: none;
+  padding: 0 0.4em;
+  transform: translateX(-0.4em);
 }
 .nav-button {
   margin-left: 0.8em;
+  padding: 0 0.4em;
+  transform: translateX(0.4em);
   cursor: pointer;
-}
-.nav-button {
-  padding: 0;
 }
 .nav-button:hover {
   color: var(--heading);
@@ -77,15 +78,18 @@
 .nav-share-button {
   display: block;
   position: relative;
-  width: 1.6em;
-  height: 1.6em;
+  width: 2em;
+  height: 2em;
   margin-right: 1.6em;
   padding: 0;
+  border-radius: 0.4em;
   cursor: pointer;
   transition: 120ms;
 }
-.nav-share-button:hover {
+.nav-share-button:hover,
+.nav-share-button:focus {
   transform: scale(1.1);
+  box-shadow: 0 0 0 4px var(--line);
 }
 .nav-share-button:active {
   transform: scale(1);
@@ -94,8 +98,8 @@
   margin-right: 0;
 }
 .nav-share-wrap svg {
-  width: 1.6em;
-  height: 1.6em;
+  width: 2em;
+  height: 2em;
 }
 .nav-share-wrap .to-fill {
   fill: var(--heading);
@@ -120,8 +124,13 @@
   opacity: 0.32;
   transition: 160ms;
 }
-.nav-share-close-wrap:hover {
+.nav-share-close-wrap:hover,
+.nav-share-close-wrap:focus {
   opacity: 1;
+}
+.nav-share-close-wrap:focus {
+  opacity: 1;
+  box-shadow: 0 0 0 3px var(--line);
 }
 .nav-share-close-line {
   position: absolute;

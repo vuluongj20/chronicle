@@ -155,7 +155,7 @@ const fetchCountyData = new Promise((resolve, reject) => {
               while (countyData[currentDate].length > 0 && row.fips < countyData[currentDate][start - 1][0]) {
                 start -= 1
               }
-              countyData[row.date].splice(start, 0, [
+              county && countyData[row.date].splice(start, 0, [
                 row.fips,
                 row.cases,
                 row.deaths,

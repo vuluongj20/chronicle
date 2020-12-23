@@ -80,6 +80,7 @@ class Title extends Component {
           <a
             className="share-button"
             href={`http://twitter.com/share?url=${url}&text=${content.head}`}
+            tabIndex="-1"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -88,6 +89,7 @@ class Title extends Component {
           <a
             className="share-button"
             href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
+            tabIndex="-1"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -96,6 +98,7 @@ class Title extends Component {
           <a
             className="share-button"
             href={`https://www.linkedin.com/sharing/share-offsite?url=${url}`}
+            tabIndex="-1"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -104,6 +107,7 @@ class Title extends Component {
           <a
             className="share-button"
             href={`mailto:?subject=${content.head}&body=${url}`}
+            tabIndex="-1"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -112,6 +116,7 @@ class Title extends Component {
           <button
             className="share-button"
             onClick={() => this.copy(url)}
+            tabIndex="-1"
           >
             <LinkIcon />
           </button>

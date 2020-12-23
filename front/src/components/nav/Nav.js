@@ -22,6 +22,8 @@ class Nav extends Component {
       showShareWrap: false,
     }
     this.copyMessageRef = React.createRef();
+    this.toggleShareWrap = this.toggleShareWrap.bind(this)
+    this.shareWrapKeyboardListener = this.shareWrapKeyboardListener.bind(this)
   }
 
   copy(url) {
@@ -43,47 +45,65 @@ class Nav extends Component {
 
   toggleShareWrap(to) {
     if (to) {
-      document.getElementsByClassName('nav-share-outer-wrap')[0].style.pointerEvents = 'all'
-      document.body.style.overflow = 'hidden'
-      gsap.to('.nav-share-wrap-background', {
-        duration: 0.6,
-        ease: 'power2.out',
-        opacity: 0.32
-      })
-      gsap.fromTo('.nav-share-content-wrap',
-      {
-        y: '+=160'
-      },
-      {
-        duration: 0.8,
-        ease: 'expo.out',
-        opacity: 1,
-        y: '0'
+      this.setState({
+        showShareWrap: to
+      }, () => {
+        document.getElementsByClassName('nav-share-outer-wrap')[0].style.pointerEvents = 'all'
+        document.addEventListener('keydown', this.shareWrapKeyboardListener)
+        document.body.style.overflow = 'hidden'
+        gsap.to('.nav-share-wrap-background', {
+          duration: 0.6,
+          ease: 'power2.out',
+          opacity: 0.32
+        })
+        gsap.fromTo('.nav-share-content-wrap',
+        {
+          y: '+=160'
+        },
+        {
+          duration: 0.8,
+          ease: 'expo.out',
+          opacity: 1,
+          y: '0'
+        })
       })
     } else {
-      document.getElementsByClassName('nav-share-outer-wrap')[0].style.pointerEvents = 'none'
-      document.body.style.overflow = 'initial'
-      gsap.to('.nav-share-wrap-background', {
-        duration: 0.4,
-        ease: 'power2.out',
-        opacity: 0
-      })
-      gsap.fromTo('.nav-share-content-wrap',
-      {
-        y: '0'
-      },
-      {
-        duration: 0.6,
-        ease: 'expo.out',
-        opacity: 0,
-        y: '+=160'
+      this.setState({
+        showShareWrap: to
+      }, () => {
+        document.getElementsByClassName('nav-share-outer-wrap')[0].style.pointerEvents = 'none'
+        document.removeEventListener('keydown', this.shareWrapKeyboardListener)
+        document.body.style.overflow = 'initial'
+        gsap.to('.nav-share-wrap-background', {
+          duration: 0.4,
+          ease: 'power2.out',
+          opacity: 0
+        })
+        gsap.fromTo('.nav-share-content-wrap',
+        {
+          y: '0'
+        },
+        {
+          duration: 0.6,
+          ease: 'expo.out',
+          opacity: 0,
+          y: '+=160'
+        })
       })
     }
   }
 
+  shareWrapKeyboardListener(e) {
+    if (e.key === 'Escape') {
+      this.toggleShareWrap()
+    }
+  }
+
   render() {
+    const { showShareWrap } = this.state
+
     return (
-      <div className="nav-wrap">
+      <nav className="nav-wrap">
         <div className="nav-inner-wrap">
           <a className="nav-app-name" href="/">Chronicle</a>
           <div className="nav-buttons">
@@ -100,12 +120,13 @@ class Nav extends Component {
             className="nav-share-wrap-background"
             onClick={() => this.toggleShareWrap(false)}
           />
-          <div className="nav-share-content-wrap">
+          <dialog className="nav-share-content-wrap">
             <h3 className="nav-share-head">Share</h3>
             <div className="nav-share-wrap">
               <a
                 className="nav-share-button"
                 href={`http://twitter.com/share?url=${url}&text=${content.head}`}
+                tabIndex={showShareWrap ? 0 : -1}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -114,6 +135,7 @@ class Nav extends Component {
               <a
                 className="nav-share-button"
                 href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
+                tabIndex={showShareWrap ? 0 : -1}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -122,6 +144,7 @@ class Nav extends Component {
               <a
                 className="nav-share-button"
                 href={`https://www.linkedin.com/sharing/share-offsite?url=${url}`}
+                tabIndex={showShareWrap ? 0 : -1}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -130,6 +153,7 @@ class Nav extends Component {
               <a
                 className="nav-share-button"
                 href={`mailto:?subject=${content.head}&body=${url}`}
+                tabIndex={showShareWrap ? 0 : -1}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -138,21 +162,22 @@ class Nav extends Component {
               <button
                 className="nav-share-button"
                 onClick={() => this.copy(url)}
+                tabIndex={showShareWrap ? 0 : -1}
               >
                 <LinkIcon />
                 <p className="copy-message hidden" ref={this.copyMessageRef}>URL copied to clipboard</p>
               </button>
             </div>
-            <div
-              className="nav-share-close-wrap"
+            <button
+              className="nav-share-close-wrap no-padding"
               onClick={() => this.toggleShareWrap(false)}
             >
               <div className="nav-share-close-line first" />
               <div className="nav-share-close-line second" />
-            </div>
-          </div>
+            </button>
+          </dialog>
         </div>
-      </div>
+      </nav>
     );
   }
 }

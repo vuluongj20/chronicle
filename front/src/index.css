@@ -43,15 +43,27 @@ p, a, button {
   line-height: 1.4;
   color: var(--body);
 }
+a {
+  border-radius: 0.2em;
+}
 button {
   appearance: none;
   font-size: 1em;
   background: transparent;
   border: none;
+  border-radius: 0.2em;
   user-select: none;
 }
 button:focus {
   outline: none;
+}
+button:focus,
+a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--line);
+}
+.no-padding {
+  padding: 0;
 }
 
 @media only screen and (min-width: 1680px) {

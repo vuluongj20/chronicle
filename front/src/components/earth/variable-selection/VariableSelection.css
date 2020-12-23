@@ -9,7 +9,6 @@
   display: flex;
   background: var(--surface);
   border-radius: 1.2em;
-  overflow: hidden;
   margin: 0 calc(var(--padding)/2);
 }
 .variable-option {
@@ -28,6 +27,12 @@
 }
 .variable-option.active {
   background: var(--line);
+}
+.variable-option.active:focus {
+  box-shadow: 0 0 0 3px var(--theme-opaque);
+}
+.variable-option:not(.active):focus {
+  box-shadow: 0 0 0 3px var(--line-light);
 }
 .variable-selection-inner-wrap.themed>.variable-option.active {
   background: var(--theme);

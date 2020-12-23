@@ -19,6 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const styles = {
   theme: '#D5DD3C',
+  themeOpaque: 'rgba(213, 221, 60, 0.4)',
   themeDark: '#D0D926',
   heading: '#242424',
   body: '#333333',
@@ -225,6 +226,7 @@ class App extends Component {
   render() {
     const globalStyles = {
       '--theme': styles.theme,
+      '--theme-opaque': styles.themeOpaque,
       '--theme-dark': styles.themeDark,
       '--heading': styles.heading,
       '--body': styles.body,
