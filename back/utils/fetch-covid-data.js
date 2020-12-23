@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const csv = require('csvtojson');
+const request = require('request')
 
 const counties = require('../data/counties');
 const populationIndex = counties.schemaMapper.population
@@ -115,10 +116,16 @@ function getRemainingDays(currentDate, monthArray) {
 const fetchCountyData = new Promise((resolve, reject) => {
   const countyData = {};
   const countyRange = {};
-  fetch(countyDataUrl)
-    .then(res => res.text())
-    .then(string => {
-      csv({
+
+  let currentDate;
+  countyRange.start = '2020-01-21'
+  countyRange.end = '2020-12-20'
+
+  let monthArray = getMonthArray(countyRange),
+    nextDate = countyRange.start,
+    proceed = true
+
+  csv({
         delimiter: ',',
         colParser: {
           date: 'string',
@@ -129,54 +136,48 @@ const fetchCountyData = new Promise((resolve, reject) => {
           deaths: 'number'
         }
       })
-        .fromString(string)
-        .then(data => {
-          let currentDate;
-          countyRange.start = data[0].date;
-          countyRange.end = data[data.length - 1].date;
-          let monthArray = getMonthArray(countyRange),
-            nextDate = countyRange.start,
-            proceed = true
-
-          data.forEach(row => {
-            if (row.date && row.date !== currentDate && row.date === nextDate) {
-              countyData[row.date] = []
-              currentDate = row.date
-              if (proceed) {
-                ([proceed, nextDate] = getNextDate(currentDate, monthArray, 20))
-              }
-              if (!proceed) {
-                nextDate = countyRange.end
-              }
-            }
-            if (row.fips && row.date === currentDate) {
-              const county = counties.data.find(county => county[2] === row.fips)
-              let start = countyData[currentDate].length
-              while (countyData[currentDate].length > 0 && row.fips < countyData[currentDate][start - 1][0]) {
-                start -= 1
-              }
-              county && countyData[row.date].splice(start, 0, [
-                row.fips,
-                row.cases,
-                row.deaths,
-                Math.max(+(row.cases/2000).toFixed(0), row.cases ? 1 : 0),
-                Math.max(+(row.deaths/140).toFixed(0), row.deaths ? 1 : 0),
-                Math.max(county[populationIndex] > 0 ? +(row.cases/county[populationIndex] * 500).toFixed(0) : 0.1, row.cases ? 1 : 0),
-                Math.max(county[populationIndex] > 0 ? +(row.deaths/county[populationIndex] * 7000).toFixed(0) : 0.1, row.deaths ? 1 : 0),
-                Math.max(row.cases > 0 ? Math.max(+(Math.log(row.cases/2000) * 6).toFixed(0), 0) : 0.1, row.cases ? 1 : 0),
-                Math.max(row.deaths > 0 ? Math.max(+(Math.log(row.deaths/140) * 4).toFixed(0), 0) : 0.1, row.deaths ? 1 : 0),
-                Math.max(county[populationIndex] > 0 && row.cases/county[populationIndex] > 0 ?
-                  Math.max(+(Math.log(row.cases/county[populationIndex]*500) * 6).toFixed(0), 0)
-                  : 0.1, row.cases ? 1 : 0),
-                Math.max(county[populationIndex] > 0 && row.deaths/county[populationIndex] > 0 ?
-                  Math.max(+(Math.log(row.deaths/county[populationIndex]*7000) * 4).toFixed(0), 0)
-                  : 0.1, row.deaths ? 1 : 0)
-              ])
-            }
-          })
-        })
-    })
-    .then(() => {
+    .fromStream(request.get(countyDataUrl))
+    .subscribe((row, rowIndex)=>{
+      return new Promise(resolve => {
+        if (row.date && row.date !== currentDate && row.date === nextDate) {
+          countyData[row.date] = []
+          currentDate = row.date
+          if (proceed) {
+            ([proceed, nextDate] = getNextDate(currentDate, monthArray, 20))
+          }
+          if (!proceed) {
+            nextDate = countyRange.end
+          }
+        }
+        if (row.fips && row.date === currentDate) {
+          const county = counties.data.find(county => county[2] === row.fips)
+          let start = countyData[currentDate].length
+          while (countyData[currentDate].length > 0 && row.fips < countyData[currentDate][start - 1][0]) {
+            start -= 1
+          }
+          county && countyData[row.date].splice(start, 0, [
+            row.fips,
+            row.cases,
+            row.deaths,
+            Math.max(+(row.cases/2000).toFixed(0), row.cases ? 1 : 0),
+            Math.max(+(row.deaths/140).toFixed(0), row.deaths ? 1 : 0),
+            Math.max(county[populationIndex] > 0 ? +(row.cases/county[populationIndex] * 500).toFixed(0) : 0.1, row.cases ? 1 : 0),
+            Math.max(county[populationIndex] > 0 ? +(row.deaths/county[populationIndex] * 7000).toFixed(0) : 0.1, row.deaths ? 1 : 0),
+            Math.max(row.cases > 0 ? Math.max(+(Math.log(row.cases/2000) * 6).toFixed(0), 0) : 0.1, row.cases ? 1 : 0),
+            Math.max(row.deaths > 0 ? Math.max(+(Math.log(row.deaths/140) * 4).toFixed(0), 0) : 0.1, row.deaths ? 1 : 0),
+            Math.max(county[populationIndex] > 0 && row.cases/county[populationIndex] > 0 ?
+              Math.max(+(Math.log(row.cases/county[populationIndex]*500) * 6).toFixed(0), 0)
+              : 0.1, row.cases ? 1 : 0),
+            Math.max(county[populationIndex] > 0 && row.deaths/county[populationIndex] > 0 ?
+              Math.max(+(Math.log(row.deaths/county[populationIndex]*7000) * 4).toFixed(0), 0)
+              : 0.1, row.deaths ? 1 : 0)
+          ])
+        }
+        resolve()
+      })
+    }, () => {
+      console.log('Error while parsing CSV file!')
+    }, () => {
       resolve({
         schemaMapper: {
           fips: 0,
