@@ -5,8 +5,8 @@
 }
 .st-date-wrap {
   position: relative;
-  height: 2.4vh;
-  min-height: 1em;
+  height: 1.6vh;
+  min-height: 0.7em;
 }
 .st-top-padding {
   height: 4em;
@@ -81,8 +81,8 @@
 .loading-circle {
   box-sizing: border-box;
   stroke: var(--theme);
-  stroke-width: 2px;
-  r: calc(1em - 4px);
+  stroke-width: 2.5px;
+  r: calc(1em - 5px);
   transform: translate(1em, 1em) rotate(-90deg);
   fill: none;
   stroke-dasharray: 75.3984;

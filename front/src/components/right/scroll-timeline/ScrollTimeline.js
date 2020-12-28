@@ -33,20 +33,14 @@ const messages = {
       s: { x: -16, y: 96, z: 117 }
     }
   },
-  '2020-03-18': {
-    text: "China reports zero local daily infections for the first time since the start of the pandemic. Meanwhile total U.S. cases shoots past 8,000.",
-  },
   '2020-04-02': {
-    text: "Cases tops 1 million. Nearly 10 million americans were out of work due to the health crisis.",
+    text: "Cases tops 1 million. Nearly 10 million americans are out of work due to the health crisis.",
   },
   '2020-04-17': {
     text: "Protests against social distancing restrictions erupt in Michigan, Minnesota and Ohio.",
   },
   '2020-04-29': {
     text: "A National Institute of Health trial show that remdesivir, made by Gilead Sciences, can decrease COVID-19 recovery time.",
-  },
-  '2020-05-12': {
-    text: "Dr. Anthony Fauci, director of the National Institute of Allergy and Infectious Diseases, testifies before the US Senate, saying that the death toll of 80,000 is likely an underestimate.",
   },
   '2020-05-27': {
     text: "More than 100,000 people have died from the virus.",
@@ -57,26 +51,26 @@ const messages = {
   '2020-06-20': {
     text: "Southern U.S. states see sharp rise in cases. Florida and South Carolina breaks their single-day record for the third straight day.",
   },
-  '2020-06-30': {
-    text: "The E.U. says it would reopen its border to 15 countries, but not including the United States.",
-  },
   '2020-07-07': {
     text: "The Trump administration sends formal notice of U.S. withdrawal from the W.H.O. Total cases reach 3 million.",
   },
   '2020-07-23': {
     text: "Cases reach 4 million. It took 72 days to reach the first million, 69 days to reach the second, 27 to reach the third, and 16 days to reach the fourth.",
   },
-  '2020-08-08': {
-    text: "Total cases reach 5 million.",
-  },
   '2020-08-23': {
-    text: "The U.S. Food and Drug Adminstration issues emergency use authorization for convalescent plasma to treat COVID-19.",
-  },
-  '2020-08-30': {
-    text: "More than 6 million total cases have been reported.",
+    text: "The U.S. Food and Drug Adminstration (FDA) issues emergency use authorization for convalescent plasma to treat COVID-19.",
   },
   '2020-09-11': {
     text: "Despite limited reopening and health precautions, American colleges and universities have reported more than 36,000 coronavirus cases.",
+  },
+  '2020-10-15': {
+    text: "The U.S. climbs toward a third peak. Hospitals begin filling up, especially in the Midwest and Mountain West."
+  },
+  '2020-11-09': {
+    text: "The vaccine maker Pfizer announces early testing result showing that its vaccine is more than 90% effective.",
+  },
+  '2020-12-12': {
+    text: "The FDA issues emergency authorization for the Pfizer-BioNTech vaccine. Millions of doses are shipped out immediately.",
   },
 }
 

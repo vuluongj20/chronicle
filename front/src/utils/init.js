@@ -312,7 +312,7 @@ export function initializeCanvas(counties, usTopo, worldTopo, cases, monthArray,
   // RENDER
   renderer.setSize(wrapperBBox.width, wrapperBBox.height)
   renderer.setPixelRatio(window.devicePixelRatio)
-  renderer.setClearColor('#FFFFFF', 1)
+  renderer.setClearColor('#F8F7F7', 1)
   renderer.render(scene, camera)
 
   // ANIMATE
