@@ -115,17 +115,17 @@ a:focus {
 @font-face {
   font-family: 'Founders Grotesk';
   font-weight: 700;
-  src: url('/fonts/FoundersGrotesk-Bold.woff2') format('woff2'),
-  url('/fonts/FoundersGrotesk-Bold.woff') format('woff');
+  src: url('./fonts/FoundersGrotesk-Bold.woff2') format('woff2'),
+  url('./fonts/FoundersGrotesk-Bold.woff') format('woff');
 }
 @font-face {
   font-family: 'Founders Grotesk Text';
   font-weight: 500;
-  src: url('/fonts/FoundersGroteskText-Medium.woff') format('woff');
+  src: url('./fonts/FoundersGroteskText-Medium.woff') format('woff');
 }
 @font-face {
   font-family: 'Apercu Mono';
   font-weight: 700;
-  src: url('/fonts/ApercuMono-Bold.woff2') format('woff2'),
-  url('/fonts/ApercuMono-Bold.woff') format('woff');
+  src: url('./fonts/ApercuMono-Bold.woff2') format('woff2'),
+  url('./fonts/ApercuMono-Bold.woff') format('woff');
 }
